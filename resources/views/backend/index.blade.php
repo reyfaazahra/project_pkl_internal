@@ -37,7 +37,7 @@
                     style="width: 150px; height: 150px; transform: translate(-75px, 75px);"></div>
             </div>
         </div>
-        
+
         <!-- Enhanced Stats Cards -->
         <div class="row">
             <div class="col-lg-3 col-md-6 mb-4">
@@ -48,7 +48,7 @@
                             <i class="ti ti-file-text text-primary" style="font-size: 24px;"></i>
                         </div>
                         <h4 class="fw-bold text-primary mb-1">{{ $quizzes->count() }}</h4>
-                        <p class="text-muted mb-0">Total Quiz</p>
+                        <p class="text-muted mb-   0">Total Quiz</p>
                     </div>
                 </div>
             </div>
@@ -96,8 +96,23 @@
                     </div>
                 </div>
             </div>
+             <!-- Card Total Mata Pelajaran -->
+              
+<div class="col-lg-3 col-md-6 mb-4">
+    <div class="card border-0 shadow-sm stats-card">
+        <div class="card-body text-center py-4">
+            <div class="rounded-circle bg-secondary-subtle d-inline-flex align-items-center justify-content-center mb-3"
+                style="width: 60px; height: 60px;">
+                <i class="ti ti-book text-secondary" style="font-size: 24px;"></i>
+            </div>
+            <h4 class="fw-bold text-secondary mb-1">{{ $mataPelajarans->count() }}</h4>
+            <p class="text-muted mb-0">Total Mata Pelajaran</p>
         </div>
-        
+    </div>
+</div>
+
+        </div>
+
         <!-- Filter Section -->
         <div class="card mb-4">
             <div class="card-body">
@@ -125,14 +140,14 @@
                 <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                     <div class="card quiz-card h-100 position-relative" data-aos="fade-up"
                         data-aos-delay="{{ $index * 100 }}">
-                        
+
                         <!-- Status Badge -->
                         <div class="position-absolute top-0 end-0 mt-3 me-3">
                             <span class="badge {{ $quiz->status_aktivasi === 'aktif' ? 'bg-success' : 'bg-secondary' }}">
                                 {{ ucfirst($quiz->status_aktivasi) }}
                             </span>
                         </div>
-                        
+
                         <div class="card-body pb-0">
                             <!-- Quiz Title -->
                             <h5 class="card-title fw-bold mb-2" title="{{ $quiz->judul_quiz }}">
@@ -253,7 +268,7 @@
                                     </a>
                                 </div>
                             </div>
-                            
+
                             <!-- Additional Actions -->
                             <div class="mt-2">
                                 @if($quiz->status_aktivasi === 'aktif' && $quiz->soals->count() > 0)

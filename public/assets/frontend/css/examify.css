@@ -1,0 +1,139 @@
+/* === HERO / BANNER === */
+.banner_part {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #a16ff7, #6f8ae4);
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner_text h1 {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 52px;
+}
+
+.banner_text p {
+    color: #e0e7ff;
+    font-size: 18px;
+    margin: 20px 0 32px;
+}
+
+.btn_1 {
+    background: #ffffff;
+    color: #d487f2 !important;
+    padding: 14px 36px;
+    border-radius: 999px;
+    font-weight: 600;
+    border: none;
+    transition: 0.3s ease;
+}
+
+.btn_1:hover {
+    background: #e0e7ff;
+    transform: translateY(-3px);
+}
+
+/* === IMAGE === */
+.banner_img img:first-child {
+    max-width: 420px;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));
+}
+
+/* HAPUS PATTERN LAMA */
+.pattern_img {
+    display: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .banner_text h1 {
+        font-size: 36px;
+    }
+
+    .banner_img {
+        display: none;
+    }
+}
+.banner_part {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #8f7cff, #6c63ff);
+    display: flex;
+    align-items: center;
+}
+
+.banner_text h1 {
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.banner_text p {
+    font-size: 18px;
+    margin-top: 20px;
+    opacity: 0.9;
+}
+.feature-cards {
+    display: flex;
+    gap: 20px;
+    margin-top: 48px;
+}
+
+.feature-card {
+    width: 140px;
+    padding: 26px 20px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    text-align: center;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.35);
+}
+.feature-card span {
+    font-size: 36px;
+    display: block;
+}
+
+.feature-card p {
+    margin-top: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+}
+.feature-cards {
+    margin-top: 24px;
+}
+.banner_btn {
+    margin-top: 32px;
+}
+
+.btn_primary {
+    display: inline-block;
+    padding: 14px 32px;
+    background: #ffffff;
+    color: #6c63ff;
+    font-weight: 600;
+    border-radius: 999px;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+.btn_primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+}
+
+.btn_secondary {
+    margin-left: 20px;
+    color: #ffffff;
+    font-weight: 500;
+    text-decoration: underline;
+}

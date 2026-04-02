@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="{{asset('assets/frontend/css/slick.css') }}">
     <!-- style CSS -->
     <link rel="stylesheet" href="{{asset('assets/frontend/css/style.css') }}">
+    <link rel="stylesheet" href="{{asset('assets/frontend/css/examify.css') }}">
+
 </head>
 
 <body>
@@ -33,24 +35,43 @@
 
     <!-- banner part start-->
     <section class="banner_part">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-5">
-                    <div class="banner_text">
-                        <div class="banner_text_iner">
-                            <h1>Examify</h1>
-                            <p>Tempatnya Asah Otak dan Kecepatan</p>
-                            <a href="{{route ('login')}}" class="btn_1">Yuk Mulai Sekarang!</a>
-                        </div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="banner_text">
+                    <h1>Quiz Online,<br>Lebih Seru & Cepat</h1>
+                    <p>
+                        Platform kuis dan ujian online buat siswa.  
+                        Simpel, cepat, dan fokus ke hasil.
+                    </p>
+
+                    <div class="banner_btn">
+                        <a href="{{ route('login') }}" class="btn_primary">
+                            Mulai Quiz
+                        </a>
                     </div>
                 </div>
             </div>
+
+            <div class="feature-cards">
+    <div class="feature-card">
+        <span>⚡</span>
+        <p>Cepat</p>
+    </div>
+    <div class="feature-card">
+        <span>🎯</span>
+        <p>Akurat</p>
+    </div>
+    <div class="feature-card">
+        <span>📊</span>
+        <p>Nilai Otomatis</p>
+    </div>
+</div>
+
         </div>
-        <div class="banner_img">
-            <img src="{{asset('assets/frontend/img/otak.jpg')}}" alt="#" class="img-fluid">
-            <img src="{{asset('assets/frontend/img/banner_pattern.png') }}" alt="#" class="pattern_img img-fluid">
-        </div>
-    </section>
+    </div>
+</section>
+
     <!-- banner part start-->
 
     <!-- product list start-->
@@ -101,6 +122,7 @@
     <script src="{{asset('assets/frontend/js/mail-script.js') }}"></script>
     <!-- custom js -->
     <script src="{{asset('assets/frontend/js/custom.js') }}"></script>
+    
 </body>
 
 </html>

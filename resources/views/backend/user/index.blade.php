@@ -61,9 +61,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 text-md-end mt-3 mt-md-0">
-                    <a href="{{ route('users.create') }}" class="btn btn-primary btn-lg px-4">
-                        <i class="ti ti-plus me-2"></i>Buat User Baru
+                <div class="col-md-4 d-flex justify-content-md-end align-items-center gap-2 mt-3 mt-md-0">
+                    <button type="button"
+                        class="btn btn-success btn-sm px-3 d-flex align-items-center"
+                        data-bs-toggle="modal"
+                        data-bs-target="#importUserModal">
+                        <i class="ti ti-upload me-1"></i>
+                        Import Excel
+                    </button>
+
+                    <a href="{{ route('users.create') }}"
+                        class="btn btn-primary btn-sm px-3 d-flex align-items-center">
+                        <i class="ti ti-plus me-1"></i>
+                        User Baru
                     </a>
                 </div>
             </div>
@@ -113,7 +123,10 @@
                                 </span>
                             </td>
                             <td class="py-4">
-                                <small class="text-muted"><i class="ti ti-calendar me-1"></i>{{ $user->created_at->format('d M Y, H:i') }}</small>
+                                <small class="text-muted">
+                                    <i class="ti ti-calendar me-1"></i>
+                                    {{ $user->created_at->timezone('Asia/Jakarta')->format('d M Y, H:i') }}
+                                </small>
                             </td>
                             @if ($user->email !== 'admin@gmail.com')
                             <td class="py-4 text-center pe-4">
@@ -139,6 +152,49 @@
                 </table>
             </div>
         </div>
+
+        <!-- MODAL IMPORT EXCEL -->
+<div class="modal fade" id="importUserModal" tabindex="-1">
+    <div class="modal-dialog">
+        <form action="{{ route('users.import') }}" method="POST" enctype="multipart/form-data" class="modal-content">
+            @csrf
+
+            <div class="modal-header">
+                <h5 class="modal-title">Import User dari Excel</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Upload File Excel</label>
+                    <input type="file" name="file" class="form-control" required accept=".xlsx,.xls">
+                </div>
+
+                <!-- DOWNLOAD TEMPLATE -->
+                <div class="text-center">
+                    <small class="text-muted d-block mb-2">
+                        Belum punya template?
+                    </small>
+                    <a href="{{ route('users.exportTemplate') }}" class="btn btn-outline-success btn-sm">
+                        ⬇ Download Template
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Batal
+                </button>
+                <button type="submit" class="btn btn-success">
+                    Import
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
         @else
         <div class="card-body text-center py-5">
             <div class="mb-4">

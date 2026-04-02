@@ -4,32 +4,36 @@ namespace App\Http\Controllers;
 
 use App\Models\Kategori;
 use App\Models\Quiz;
+use App\Models\MataPelajaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class BackendController extends Controller
 {
-    public function index(Request $request)
-    {
-        $user = Auth::user(); // <-- tambahkan ini
-        $userId = $user->id;
+public function index(Request $request)
+{
+    $user = Auth::user();
+    $userId = $user->id;
 
-        $query = Quiz::with(['user', 'soals'])
-            ->where('user_id', $userId)
-            ->orderBy('created_at', 'desc');
+    $query = Quiz::with(['user', 'soals'])
+        ->where('user_id', $userId)
+        ->orderBy('created_at', 'desc');
 
-        $showAll = $request->get('show_all', false);
-        $kategories = Kategori::all();
+    $showAll = $request->get('show_all', false);
+    $kategories = Kategori::all();
 
-        if (! $showAll) {
-            $allQuizzes = $query->get();
-            $quizzes = $allQuizzes;
-        } else {
-            $quizzes = $query->paginate(12);
-        }
+    $mataPelajarans = MataPelajaran::all(); // <-- kirim semua mapel
 
-        return view('backend.index', compact('quizzes', 'showAll', 'kategories', 'user'));
+    if (! $showAll) {
+        $allQuizzes = $query->get();
+        $quizzes = $allQuizzes;
+    } else {
+        $quizzes = $query->paginate(12);
     }
+
+    return view('backend.index', compact('quizzes', 'showAll', 'kategories', 'user', 'mataPelajarans'));
+}
+
 
     public function indexAlternative(Request $request)
     {

@@ -13,7 +13,7 @@ class MataPelajaranController extends Controller
      */
     public function index()
     {
-        $mataPelajaran = MataPelajaran::latest()->get();
+        $mataPelajaran = MataPelajaran::latest()->limit(5)->get();
 
         return view('backend.matapelajaran.index', compact('mataPelajaran'));
     }

@@ -66,4 +66,13 @@ class FrontendController extends Controller
         return view('frontend.detail_quiz', compact('quiz'));
     }
 
+    public function ranking()
+{
+    $users = \App\Models\User::where('isAdmin', 0)
+        ->withSum('hasilUjian as total_score', 'skor') // 🔥 pakai skor
+        ->orderByDesc('total_score')
+        ->get();
+
+    return view('frontend.ranking', compact('users'));
+}
 }

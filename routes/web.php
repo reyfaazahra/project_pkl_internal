@@ -19,11 +19,13 @@ Route::get('/', function () {
 
 Auth::routes(['register' => false]);
 
-// Quiz routes
+// ================= USER =================
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [FrontendController::class, 'index'])->name('dashboard');
     Route::get('/historiPengerjaan', [HasilUjianController::class, 'index'])->name('histori-pengerjaan');
-
+    Route::get('/ranking', [FrontendController::class, 'ranking'])
+    ->middleware('auth')
+    ->name('ranking');
     Route::get('/quiz/{id}/start', [QuizController::class, 'start'])->name('quiz.start');
     Route::post('/quiz/{id}/submit', [QuizController::class, 'submit'])->name('quiz.submit');
     Route::post('/quiz/{id}/submit', [QuizController::class, 'submit'])->name('quiz.submit');
@@ -37,13 +39,28 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// ================= ADMIN =================
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', Admin::class]], function () {
-    Route::get('/', [BackendController::class, 'index'])->name('admin.quiz-terbaru');
-    Route::resource('quiz', QuizController::class);
 
-    Route::patch('/quiz/{id}/toggle-aktivasi', [QuizController::class, 'toggleAktivasi'])->name('quiz.toggleAktivasi');
+    Route::get('/', [BackendController::class, 'index'])->name('admin.quiz-terbaru');
+
+    Route::resource('quiz', QuizController::class);
+    Route::patch('/quiz/{id}/toggle-aktivasi', [QuizController::class, 'toggleAktivasi'])
+        ->name('quiz.toggleAktivasi');
 
     Route::resource('kategori', KategoriController::class);
+
+    // 🔥 USER ROUTES (SUDAH FIX URUTAN)
+
+    // ✅ EXPORT TEMPLATE (HARUS DI ATAS)
+    Route::get('users/export-template', [UserController::class, 'exportTemplate'])
+        ->name('users.exportTemplate');
+
+    // ✅ IMPORT
+    Route::post('users/import', [UserController::class, 'import'])
+        ->name('users.import');
+
+    // ❗ RESOURCE PALING BAWAH
     Route::resource('users', UserController::class);
 
     Route::resource('matapelajaran', MataPelajaranController::class);

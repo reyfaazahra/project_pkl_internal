@@ -1,5 +1,5 @@
 
-@extends('layouts.backend')
+@extends('layouts.frontend')
 @section('content')
     @include('layouts.components-backend.css')
     <div class="container-fluid">

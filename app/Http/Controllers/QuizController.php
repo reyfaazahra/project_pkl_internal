@@ -10,7 +10,7 @@ use App\Models\Quiz;
 use App\Models\Soal;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;

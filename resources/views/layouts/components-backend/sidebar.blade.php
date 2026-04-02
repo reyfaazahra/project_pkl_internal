@@ -109,6 +109,15 @@
                             <span class="hide-menu">Riwayat Pengerjaan</span>
                         </a>
                     </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ request()->routeIs('ranking') ? 'active' : '' }}" href="{{ route('ranking') }}">
+                            <span>
+                                <i class="ti ti-trophy"></i>
+                            </span>
+                            <span class="hide-menu">Ranking</span>
+                        </a>
+                    </li>
                 </ul>
             @endif
         </nav>

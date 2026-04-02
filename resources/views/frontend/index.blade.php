@@ -1,4 +1,4 @@
-@extends('layouts.backend')
+@extends('layouts.frontend')
 @section('content')
     @include('layouts.components-backend.css')
     <div class="container-fluid">
@@ -198,16 +198,6 @@
                 </div>
             @endforelse
         </div>
-
-        <!-- Show All Quizzes Button -->
-        @if ($recentQuizzes->count() > 0 && $quizzes->count() > $recentQuizzes->count())
-            <div class="text-center mt-4">
-                <button class="btn btn-outline-primary" id="showAllQuizzes">
-                    <i class="ti ti-eye me-2"></i>Lihat Semua Quiz ({{ $quizzes->count() - $recentQuizzes->count() }}
-                    lainnya)
-                </button>
-            </div>
-        @endif
     </div>
 
     <!-- Toast Container -->
