@@ -5,112 +5,84 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Examify</title>
+
     <link rel="icon" href="{{asset('assets/frontend/img/favicon.png') }}">
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('assets/frontend/css/bootstrap.min.css') }}">
-    <!-- animate CSS -->
     <link rel="stylesheet" href="{{asset('assets/frontend/css/animate.css') }}">
-    <!-- owl carousel CSS -->
     <link rel="stylesheet" href="{{asset('assets/frontend/css/owl.carousel.min.css') }}">
-    <!-- font awesome CSS -->
     <link rel="stylesheet" href="{{asset('assets/frontend/css/all.css') }}">
-    <!-- flaticon CSS -->
     <link rel="stylesheet" href="{{asset('assets/frontend/css/flaticon.css') }}">
     <link rel="stylesheet" href="{{asset('assets/frontend/css/themify-icons.css') }}">
-    <!-- font awesome CSS -->
     <link rel="stylesheet" href="{{asset('assets/frontend/css/magnific-popup.css') }}">
-    <!-- swiper CSS -->
     <link rel="stylesheet" href="{{asset('assets/frontend/css/slick.css') }}">
-    <!-- style CSS -->
     <link rel="stylesheet" href="{{asset('assets/frontend/css/style.css') }}">
     <link rel="stylesheet" href="{{asset('assets/frontend/css/examify.css') }}">
 
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <!--::header part start::-->
-   @include('layouts.components-frontend.navbar')
-    <!-- Header part end-->
 
-    <!-- banner part start-->
-    <section class="banner_part">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="banner_text">
-                    <h1>Quiz Online,<br>Lebih Seru & Cepat</h1>
-                    <p>
-                        Platform kuis dan ujian online buat siswa.  
-                        Simpel, cepat, dan fokus ke hasil.
+    @include('layouts.components-frontend.navbar')
+
+    <!-- HERO (MAIN) -->
+    <section class="hero_main">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <!-- LEFT -->
+                <div class="col-lg-6">
+                    <h1 class="hero-title">
+                        Belajar Jadi Lebih Seru 🎯<br>
+                        dengan Quiz Interaktif
+                    </h1>
+
+                    <p class="hero-desc">
+                        Jawab soal, lihat timer berjalan, dan dapatkan skor secara real-time.
+                        Belajar jadi lebih cepat, seru, dan gak membosankan.
                     </p>
 
-                    <div class="banner_btn">
-                        <a href="{{ route('login') }}" class="btn_primary">
-                            Mulai Quiz
-                        </a>
+                    <a href="{{ route('login') }}" class="btn_primary">
+                        Mulai Sekarang
+                    </a>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="col-lg-6">
+                    <div class="quiz-box">
+
+                        <div class="quiz-header">
+                            <span>Soal 1/10</span>
+                            <span>⏱ 00:10</span>
+                        </div>
+
+                        <h5 class="question">Berapa hasil dari 5 × 3 ?</h5>
+
+                        <div class="option">A. 10</div>
+                        <div class="option correct">B. 15</div>
+                        <div class="option">C. 20</div>
+                        <div class="option">D. 25</div>
+
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+
                     </div>
                 </div>
+
             </div>
-
-            <div class="feature-cards">
-    <div class="feature-card">
-        <span>⚡</span>
-        <p>Cepat</p>
-    </div>
-    <div class="feature-card">
-        <span>🎯</span>
-        <p>Akurat</p>
-    </div>
-    <div class="feature-card">
-        <span>📊</span>
-        <p>Nilai Otomatis</p>
-    </div>
-</div>
-
         </div>
-    </div>
-</section>
+    </section>
 
-    <!-- banner part start-->
+    @include('layouts.components-frontend.footer')
 
-    <!-- product list start-->
-    
-    <!-- product list end-->
-
-
-    <!-- trending item start-->
-   
-    <!-- trending item end-->
-
-    <!-- client review part here -->
-   
-    <!-- client review part end -->
-
-
-    <!-- feature part here -->
-    
-    <!-- feature part end -->
-
-    <!-- subscribe part here -->
-
-    <!-- subscribe part end -->
-
-    <!--::footer_part start::-->
-    @include('layouts.components-frontend.footer');
-    <!--::footer_part end::-->
-
-    <!-- jquery plugins here-->
+    <!-- JS -->
     <script src="{{asset('assets/frontend/js/jquery-1.12.1.min.js') }}"></script>
-    <!-- popper js -->
     <script src="{{asset('assets/frontend/js/popper.min.js') }}"></script>
-    <!-- bootstrap js -->
     <script src="{{asset('assets/frontend/js/bootstrap.min.js') }}"></script>
-    <!-- magnific popup js -->
     <script src="{{asset('assets/frontend/js/jquery.magnific-popup.js') }}"></script>
-    <!-- carousel js -->
     <script src="{{asset('assets/frontend/js/owl.carousel.min.js') }}"></script>
     <script src="{{asset('assets/frontend/js/jquery.nice-select.min.js') }}"></script>
-    <!-- slick js -->
     <script src="{{asset('assets/frontend/js/slick.min.js') }}"></script>
     <script src="{{asset('assets/frontend/js/jquery.counterup.min.js') }}"></script>
     <script src="{{asset('assets/frontend/js/waypoints.min.js') }}"></script>
@@ -119,9 +91,7 @@
     <script src="{{asset('assets/frontend/js/jquery.form.js') }}"></script>
     <script src="{{asset('assets/frontend/js/jquery.validate.min.js') }}"></script>
     <script src="{{asset('assets/frontend/js/mail-script.js') }}"></script>
-    <!-- custom js -->
     <script src="{{asset('assets/frontend/js/custom.js') }}"></script>
-    
-</body>
 
+</body>
 </html>

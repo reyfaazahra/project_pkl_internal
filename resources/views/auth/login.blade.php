@@ -123,54 +123,88 @@
               <p class="mb-6">Jelajahi dunia ujian digital bersama Examify!
 Masuk sekarang untuk mulai perjalanan belajarmu.</p>
 
-              <form id="formAuthentication" class="mb-6" action="{{ route('login') }}" method="POST">
-                @csrf
-                <div class="mb-6">
-                  <label for="email" class="form-label">Email or Username</label>
-                  <input
-                    type="text"
-                    class="form-control @error('email') is-invalid @enderror"
-                    id="email"
-                    name="email"
-                    value="{{ old('email') }}"
-                    required autocomplete="email"
-                    placeholder="Enter your email or username"
-                    autofocus>
+              <form id="formAuthentication" 
+      class="mb-6" 
+      action="{{ route('login') }}" 
+      method="POST" 
+      autocomplete="off">
+    @csrf
 
-                    @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-                <div class="mb-6 form-password-toggle">
-                  <label class="form-label" for="password">Password</label>
-                  <div class="input-group input-group-merge">
-                    <input
-                      type="password"
-                      id="password"
-                      class="form-control form-control @error('password') is-invalid @enderror"
-                      name="password"
-                      required autocomplete="current-password"
-                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                      aria-describedby="password" />
-                    @error('password')
-                        <span class="input-group-text cursor-pointer invalid-feedback" role="alert"><i class="icon-base bx bx-hide"></i></span>
-                    @enderror
-                  </div>
-                </div>
-                <div class="mb-8">
-                  <div class="d-flex justify-content-between">
-                    <div class="form-check mb-0">
-                      <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                      <label class="form-check-label" for="remember-me"> Remember Me </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="mb-6">
-                  <button class="btn btn-primary d-grid w-100" type="submit">Login</button>
-                </div>
-              </form>
+    <!-- TRICK BIAR BROWSER GAK AUTOFILL -->
+    <input type="text" name="fakeuser" style="display:none">
+    <input type="password" name="fakepass" style="display:none">
+
+    <!-- EMAIL -->
+    <div class="mb-6">
+        <label for="email" class="form-label">Email or Username</label>
+        <input
+            type="text"
+            class="form-control @error('email') is-invalid @enderror"
+            id="email"
+            name="email"
+            value="{{ old('email') }}"
+            required
+            autocomplete="off"
+            placeholder="Masukkan email kamu"
+        >
+
+        @error('email')
+            <span class="invalid-feedback">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+
+    <!-- PASSWORD -->
+    <div class="mb-6 form-password-toggle">
+        <label class="form-label" for="password">Password</label>
+        <div class="input-group input-group-merge">
+            <input
+                type="password"
+                id="password"
+                class="form-control @error('password') is-invalid @enderror"
+                name="password"
+                required
+                autocomplete="new-password"
+                placeholder="Masukkan password"
+            >
+
+            <span class="input-group-text cursor-pointer">
+                👁
+            </span>
+        </div>
+
+        @error('password')
+            <span class="invalid-feedback d-block">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+
+    <!-- REMEMBER -->
+    <div class="mb-8">
+        <div class="form-check">
+            <input 
+                class="form-check-input" 
+                type="checkbox" 
+                name="remember" 
+                id="remember"
+                {{ old('remember') ? 'checked' : '' }}
+            >
+            <label class="form-check-label" for="remember">
+                Ingat saya
+            </label>
+        </div>
+    </div>
+
+    <!-- BUTTON -->
+    <div class="mb-6">
+        <button class="btn btn-primary d-grid w-100" type="submit">
+            Masuk Sekarang 🚀
+        </button>
+    </div>
+
+</form>
             </div>
           </div>
           <!-- /Register -->
@@ -184,7 +218,7 @@ Masuk sekarang untuk mulai perjalanan belajarmu.</p>
 
     <script src="{{ asset('assets/backend/login/vendor/libs/jquery/jquery.js')}}"></script>
 
-    <script src="{{ asset('assets/backend/login/vendor/libs/popper/popper.j')}}s"></script>
+    <script src="{{ asset('assets/backend/login/vendor/libs/popper/popper.js')}}"></script>
     <script src="{{ asset('assets/backend/login/vendor/js/bootstrap.js')}}"></script>
 
     <script src="{{ asset('assets/backend/login/vendor/libs/perfect-scrollbar/perfect-scrollbar.js')}}"></script>
