@@ -454,26 +454,35 @@ class QuizController extends Controller
     }
 
     public function destroy(Quiz $quiz)
-    {
-        if ($quiz->user_id !== Auth::id()) {
-            abort(403, 'Anda tidak memiliki akses untuk menghapus quiz ini.');
-        }
-        try {
-            DB::beginTransaction();
+{
+    $user = Auth::user();
 
-            $quiz->soals()->delete();
-            $quiz->delete();
-            DB::commit();
-
-            return redirect()->route('quiz.index')
-                ->with('success', 'Quiz berhasil dihapus.');
-        } catch (\Exception $e) {
-            DB::rollback();
-            Log::error('Error deleting quiz: '.$e->getMessage());
-
-            return back()->withErrors(['error' => 'Terjadi kesalahan saat menghapus quiz.']);
-        }
+    // IZIN:
+    // - admin bebas hapus
+    // - user biasa cuma boleh hapus quiz miliknya
+    if (!$user->isAdmin && $quiz->user_id !== $user->id) {
+        abort(403, 'Anda tidak memiliki akses untuk menghapus quiz ini.');
     }
+
+    try {
+        DB::beginTransaction();
+
+        $quiz->soals()->delete();
+        $quiz->delete();
+
+        DB::commit();
+
+        return redirect()->route('quiz.index')
+            ->with('success', 'Quiz berhasil dihapus.');
+
+    } catch (\Exception $e) {
+        DB::rollback();
+
+        Log::error('Error deleting quiz: '.$e->getMessage());
+
+        return back()->withErrors(['error' => 'Terjadi kesalahan saat menghapus quiz.']);
+    }
+}
 
 
 public function start($id)

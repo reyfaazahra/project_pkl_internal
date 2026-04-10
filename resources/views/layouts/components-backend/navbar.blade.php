@@ -27,7 +27,7 @@
                     </a>
                     <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-center">
                         <li class="nav-item dropdown">
-                            <a class="nav-link pe-0" href="javascript:void(0)">
+                            <a class="nav-link pe-0" href="#" data-bs-toggle="dropdown">
                                 <div class="d-flex align-items-center">
                                     <div class="user-profile-img">
                                         <img src="{{ asset('assets/backend/images/profile/user-1.jpg') }}"
